@@ -9,4 +9,8 @@ class Movie {
 		title(blank:false, maxSize:50)
 		releaseDate(nullable:true)
     }
+	
+	String toString() {
+		"$title - $releaseDate"
+	}
 }

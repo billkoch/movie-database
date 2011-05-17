@@ -8,18 +8,6 @@
         <g:set var="entityName" value="${message(code: 'movie.label', default: 'Movie')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
         <g:javascript library="jquery" />
-        <script type="text/javascript">
-			$(document).ready(function() {
-				$("#release_date").datepicker({
-					dateFormat: 'mm/dd/yy',
-					onClose: function(dateText, inst) {
-				        $("#releaseDate_month").val(new Date(dateText).getMonth() + 1);
-				        $("#releaseDate_day").val(new Date(dateText).getDate());
-				        $("#releaseDate_year").val(new Date(dateText).getFullYear());
-					}
-				});
-			});
-    	</script>
     </head>
     <body>
         <div class="nav">
@@ -55,13 +43,9 @@
                                     <label for="releaseDate"><g:message code="movie.releaseDate.label" default="Release Date" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: movieInstance, field: 'releaseDate', 'errors')}">
-                                    <g:textField name="release_date" value="${movieInstance?.releaseDate ? movieInstance?.releaseDate.format('MM/dd/yyyy') : ''}" />
-                                    <g:hiddenField name="releaseDate_month" value="${movieInstance?.releaseDate?.format('MM')}" />
-                                    <g:hiddenField name="releaseDate_day" value="${movieInstance?.releaseDate?.format('dd')}" />
-                                    <g:hiddenField name="releaseDate_year" value="${movieInstance?.releaseDate?.format('yyyy')}" />
+    								<koch:jqDatePicker date="${movieInstance?.releaseDate}" variableName="releaseDate" dateFormat="mm/dd/yy" />
                                 </td>
-                            </tr>
-                        
+                            </tr>                        
                         </tbody>
                     </table>
                 </div>
